@@ -108,3 +108,7 @@ def read_root():
 @app.get("/api")
 def read_api_root():
     return {"message": "Weather Backend is running (Full) at /api"}
+
+@app.get("/api/health")
+def health_check():
+    return {"status": "ok", "environment": "vercel"}
