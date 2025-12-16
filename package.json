@@ -3,7 +3,12 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "build": "cd frontend && npm install && npm run build"
+        "build": "cd frontend && npm install && npm run build",
+        "install:frontend": "cd frontend && npm install",
+        "install:backend": "cd backend && pip install -r requirements.txt",
+        "dev:frontend": "cd frontend && npm run dev",
+        "dev:backend": "cd backend && uvicorn main:app --reload --port 8000",
+        "setup": "npm run install:frontend && npm run install:backend"
     },
     "engines": {
         "node": "20.x"
