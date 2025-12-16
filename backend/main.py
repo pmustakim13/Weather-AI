@@ -96,6 +96,15 @@ async def chat(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+# Also mount at /api/chat for Vercel production
+@app.post("/api/chat")
+async def chat_api(request: ChatRequest):
+    return await chat(request)
+
 @app.get("/")
 def read_root():
     return {"message": "Weather Backend is running (Full)"}
+    
+@app.get("/api")
+def read_api_root():
+    return {"message": "Weather Backend is running (Full) at /api"}
