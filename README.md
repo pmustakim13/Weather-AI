@@ -2,7 +2,7 @@
 
 A minimal yet powerful weather application that combines a **React** frontend with a **FastAPI** backend, powered by **LangChain** and **OpenRouter** (LLM) to provide intelligent weather insights for any city.
 
-![Weather AI Preview](https://via.placeholder.com/800x400?text=Weather+AI+Preview)
+[Weather AI Preview](https://weather-ai-seven.vercel.app/)
 
 ## 🚀 Features
 
