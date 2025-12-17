@@ -30,7 +30,6 @@ class ChatRequest(BaseModel):
 def get_current_weather(city: str):
     """Get the current weather for a city using Open-Meteo."""
     try:
-        # Geocoding to get lat/lon
         geo_url = f"https://geocoding-api.open-meteo.com/v1/search?name={city}&count=1&language=en&format=json"
         geo_res = requests.get(geo_url).json()
         
@@ -49,8 +48,7 @@ def get_current_weather(city: str):
         current = weather_res.get("current", {})
         temp = current.get("temperature_2m", "N/A")
         code = current.get("weather_code", "N/A")
-        
-        # Simple weather code interpretation (WMO code)
+
         weather_desc = "Unknown"
         if code == 0: weather_desc = "Clear sky"
         elif code in [1, 2, 3]: weather_desc = "Mainly clear, partly cloudy, and overcast"
@@ -96,7 +94,7 @@ async def chat(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Also mount at /api/chat for Vercel production
+#for Vercel production
 @app.post("/api/chat")
 async def chat_api(request: ChatRequest):
     return await chat(request)

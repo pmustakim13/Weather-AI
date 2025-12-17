@@ -35,8 +35,6 @@ const WeatherChat = () => {
             let msg = 'Sorry, something went wrong. Please check the backend connection.';
 
             if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
                 msg = `Server Error (${error.response.status}): ${JSON.stringify(error.response.data)}`;
                 if (error.response.status === 404) {
                     msg = "Error 404: Endpoint not found. Please check Vercel configuration.";
@@ -44,7 +42,6 @@ const WeatherChat = () => {
                     msg = "Error 500: Server error. Likely missing OPENROUTER_API_KEY in Vercel Settings.";
                 }
             } else if (error.request) {
-                // The request was made but no response was received
                 msg = "Network Error: No response received from server.";
             }
 
@@ -82,7 +79,7 @@ const WeatherChat = () => {
                     <div className="welcome-message">
                         <h2>Hello! 👋</h2>
                         <p>Ask me about the weather in any city.</p>
-                        <p className="example-text">"What's the weather in Tokyo?"</p>
+                        <p className="example-text">"What's the weather in Pune?"</p>
                     </div>
                 )}
                 {messages.map((msg, index) => (
